@@ -1,6 +1,7 @@
 package com.abhi.campusconnect.service;
 
 import com.abhi.campusconnect.entity.Student;
+import com.abhi.campusconnect.exception.StudentNotFoundException;
 import com.abhi.campusconnect.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class StudentService {
     }
 
     public Student getStudentById(Long id){
-        return studentrepo.findById(id).orElseThrow(()-> new RuntimeException("Student not found"));
+        return studentrepo.findById(id).orElseThrow(()-> new StudentNotFoundException("Student not found"));
     }
 
     public Student updateStudent(Long id, Student student){
